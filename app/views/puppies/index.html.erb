@@ -1,0 +1,21 @@
+<%= render "navbar" %>
+
+<% if flash.notice %>
+  <div class="alert alert-dismissible alert-danger">
+  <button type="button" class="close" data-dismiss="alert">×</button>
+  <strong><%= flash.notice%></strong>
+</div>
+<% end %>
+
+<% @puppies.each do |puppy| %>
+<div class="col-md-4">
+  <div class="jumbotron text-center">
+    <%=link_to puppy do %>
+      <img src="<%= puppy.img %>" width ="300px" height="300px"/>
+    <% end %>
+    <hr>
+    <p><%= puppy.name %>: age <%= puppy.age %>, <em><%= puppy.breed %></em></p>
+    <p>More info here: <%= link_to puppy.bio %></p>
+  </div>
+</div>
+<% end %>

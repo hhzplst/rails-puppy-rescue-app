@@ -1,0 +1,30 @@
+<%= render "navbar" %>
+
+<% if flash.notice %>
+  <div class="alert alert-dismissible alert-danger">
+  <button type="button" class="close" data-dismiss="alert">×</button>
+  <strong><%= flash.notice%></strong>
+</div>
+<% end %>
+
+<h2 class="text-center">Check out the information about <%= @puppy.name %></h2><br>
+
+<div class="col-md-4 col-md-offset-4">
+  <div class="jumbotron text-center">
+    <img src="<%= @puppy.img %>" width ="300px" height="300px"/>
+    <hr>
+    <p><%= @puppy.name %>: age <%= @puppy.age %>, <em><%= @puppy.breed %></em></p>
+    <p>More info here: <%= link_to @puppy.bio %></p>
+  </div>
+  <div class="text-center">
+    <%= link_to puppies_path do %>
+      <button class="btn btn-success">Home</button>
+    <% end %>
+    <%= link_to edit_puppy_path(@puppy) do %>
+      <button class="btn btn-success">Edit <%= @puppy.name %></button>
+    <% end %>
+    <%= link_to @puppy, method: :delete, data: {confirm: "Are you sure?"} do %>
+      <button class="btn btn-danger">Remove <%= @puppy.name %></button>
+    <% end %>
+  </div>
+</div>
